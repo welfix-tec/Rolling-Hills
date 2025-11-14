@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WildSafari Expeditions | Journey into the Wild</title>
+  <meta name="description" content="Ethical wildlife safaris across Africa, Asia, and the Amazon. Small groups, expert guides, unforgettable moments.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    /* ===== GLOBAL RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --accent: #e65100;
+      --light-cream: #fdfcf8;
+      --off-white: #f9f8f3;
+      --text: #2e2e2e;
+      --shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background-color: var(--light-cream);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Abril Fatface', serif;
+      font-weight: 400;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
+      color: var(--primary-dark);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 5%;
+      background: rgba(253, 252, 248, 0);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .nav-brand {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO CAROUSEL ===== */
+    .hero-carousel {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 10;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.8rem;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+
+    .cta-button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 6px 20px rgba(230, 81, 0, 0.5);
+    }
+
+    .cta-button:hover {
+      background: #bf360c;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(230, 81, 0, 0.7);
+    }
+
+    /* ===== SLIDING DIVIDER ===== */
+    .divider {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .divider-icon {
+      font-size: 24px;
+      color: var(--primary);
+      opacity: 0;
+      transform: scale(0.8);
+      animation: slideInDivider 1s forwards 0.3s;
+    }
+
+    @keyframes slideInDivider {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* ===== MISSION BANNER ===== */
+    .mission-banner {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                  url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .mission-banner h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .mission-banner p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.25rem;
+      opacity: 0.95;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      background: var(--off-white);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 60px 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Abril Fatface', serif;
+      font-size: 2.8rem;
+      color: var(--primary);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+
+    .stat-number.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .why-us {
+      background: var(--light-cream);
+      position: relative;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      width: 320px;
+      box-shadow: var(--shadow);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    .feature-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .feature-content {
+      padding: 1.5rem;
+    }
+
+    .feature-content h3 {
+      margin: 1rem 0;
+      color: var(--primary);
+    }
+
+    /* LEARN MORE BUTTON */
+    .learn-more-btn {
+      display: block;
+      width: 220px;
+      margin: 40px auto 0;
+      padding: 14px 24px;
+      text-align: center;
+      color: white;
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #2e7d32, #1b5e20, #388e3c);
+      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+      animation: pulseGreen 2s infinite;
+      transition: all 0.3s ease;
+    }
+
+    .learn-more-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.6);
+      background: linear-gradient(135deg, #388e3c, #2e7d32, #1b5e20);
+    }
+
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+    }
+
+    /* ===== TOURS ===== */
+    .tours {
+      background: var(--off-white);
+    }
+
+    .tour-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .tour-card {
+      width: 340px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.4s;
+    }
+
+    .tour-card:hover {
+      transform: scale(1.03);
+    }
+
+    .tour-img {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tour-info {
+      padding: 1.5rem;
+    }
+
+    .tour-info h3 {
+      margin: 0.8rem 0;
+      color: var(--primary-dark);
+    }
+
+    .tour-button {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent);
+      transition: all 0.3s;
+    }
+
+    .tour-button:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* ===== AUTO-MOVING WILDLIFE GALLERY ===== */
+    .gallery {
+      background: var(--light-cream);
+      padding: 40px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .gallery-container {
+      position: relative;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: scroll 40s linear infinite;
+    }
+
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      border-radius: 0 0 12px 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 15px 15px;
+      color: white;
+      z-index: 2;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    .gallery-caption h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .gallery-caption p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .gallery-btn {
+      background: var(--medium-green);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-btn:hover {
+      background: var(--dark-green);
+      transform: translateY(-2px);
+    }
+
+    .gallery-btn:active {
+      transform: translateY(0);
+    }
+
+    .gallery-btn.pause {
+      background: var(--accent);
+    }
+
+    .gallery-btn.pause:hover {
+      background: #c08a5c;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Pause animation on hover */
+    .gallery-container:hover .gallery-track {
+      animation-play-state: paused;
+    }
+
+    /* ===== BLOGS SECTION ===== */
+    .blogs {
+      background: var(--light-cream);
+      padding: 60px 0;
+    }
+
+    .blog-carousel {
+      scroll-behavior: smooth; /* Ensures smooth native scroll */
+      display: flex;
+      gap: 30px;
+      overflow-x: hidden; /* Hide scrollbar and prevent manual drag */
+      -ms-overflow-style: none;  /* IE/Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .blog-carousel::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    .blog-card {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: 320px;
+      background: rgb(11, 68, 1);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-img {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary-dark);
+    }
+
+    .blog-content p {
+      color: #efeaea;
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .read-more-btn {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent);
+      transition: all 0.3s;
+      font-family: 'Quicksand', sans-serif; /* or your body font */
+    }
+
+    .read-more-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                  url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .testimonial-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .testimonial-content p {
+      font-size: 1.3rem;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .client {
+      font-weight: 600;
+      color: #ffd54f;
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 20px; /* Reduced from 70px */
+    }
+
+    .newsletter-box {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .envelope-icon {
+      font-size: 2rem; /* Slightly smaller */
+      margin-bottom: 0.8rem;
+      animation: bounce 2s infinite;
+    }
+
+    .newsletter h3 {
+      font-size: 1.8rem; /* Smaller */
+      margin-bottom: 0.6rem;
+    }
+
+    .newsletter p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 30px;
+      width: 220px;
+      font-size: 0.95rem;
+    }
+
+    .newsletter-form button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark);
+      color: white;
+      padding: 50px 20px 20px;
+      font-size: 0.95rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 30px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      color: #e0f2e9;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #c8e6c9;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      text-align: center;
+      line-height: 36px;
+      transition: background 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: var(--accent);
+    }
+
+    .conservation-badges {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-style: italic;
+      color: #a5d6a7;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+      .hero-content h1 { font-size: 3rem; }
+      .feature-card, .tour-card { width: 100%; max-width: 400px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-content h1 { font-size: 2.4rem; }
+      .section-title { font-size: 2rem; }
+      .stat-number { font-size: 2.2rem; }
+      .gallery-item { width: 220px; height: 220px; }
+      .newsletter-form { flex-direction: column; align-items: center; }
+      .newsletter-form input, .newsletter-form button {
+        width: 100%;
+        max-width: 280px;
+      }
+      .footer-content { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-brand">Rolling Hills</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Tours</a></li>
+       <li><a href="our service.html">Our services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="blog/index.html">blog</a></li>
+      <li><a href="contact us.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Carousel -->
+  <header class="hero-carousel">
+    <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1664793484534-497c51a08efb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074');"></div>
+    
+    <div class="hero-content">
+      <h1>Journey Into the Wild</h1>
+      <p>Small-group safaris led by conservationists. Ethical, intimate, unforgettable.</p>
+      <button class="cta-button">Book Your Adventure</button>
+    </div>
+  </header>
+
+  <!-- Sliding Divider -->
+  <div class="divider">
+    <i class="fas fa-paw divider-icon"></i>
+  </div>
+
+  <!-- Mission -->
+  <section class="mission-banner">
+    <h2>Our Mission</h2>
+    <p>To connect travelers with Earth's most majestic creatures — responsibly, ethically, and with awe.</p>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-item">
+      <div class="stat-number" data-target="10000">0</div>
+      <div class="stat-label">Happy Explorers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="50">0</div>
+      <div class="stat-label">Wildlife Sanctuaries</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number" data-target="12">0</div>
+      <div class="stat-label">Countries Explored</div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-us">
+    <div class="container">
+      <h2 class="section-title">Why Travel With Us?</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="feature-content">
+            <h3>Ethical Wildlife Viewing</h3>
+            <p>We follow strict no-disturbance protocols to protect animals and habitats.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-img" style="background-image: url('https://www.nyungweforestrwandatours.com/wp-content/uploads/2024/03/Lake-Kivu-Rwanda.jpg');"></div>
+          <div class="feature-content">
+            <h3>Expert Local Guides</h3>
+            <p>Learn from conservationists and indigenous trackers with decades of experience.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-img" style="background-image: url('https://www.environment.gov.rw/index.php?eID=dumpFile&t=p&p=90149&token=30597c2203fc096fc385b1a17ccd9cfa9b4d93e9');"></div>
+          <div class="feature-content">
+            <h3>Carbon-Neutral Trips</h3>
+            <p>Every tour includes reforestation and community support initiatives.</p>
+          </div>
+        </div>
+      </div>
+      <a href="our service.html" class="learn-more-btn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Tours -->
+  <section id="tours" class="tours">
+    <div class="container">
+      <h2 class="section-title">Featured Wildlife Tours</h2>
+      <div class="tour-cards">
+        <div class="tour-card">
+          <div class="tour-img" style="background-image: url('https://encloseafricasafaris.com/wp-content/uploads/2020/10/1-Day-Akagera-National-Park-Game-Drive-Safari-1-1024x475.jpg');"></div>
+          <div class="tour-info">
+            <h3> Akagera National Park</h3>
+            <p>Witness the wild life in Rwnada.</p>
+            
+          </div>
+        </div>
+        <div class="tour-card">
+          <div class="tour-img" style="background-image: url('https://www.andbeyond.com/wp-content/uploads/sites/5/rwanda-gorillas.jpg');"></div>
+          <div class="tour-info">
+            <h3> Gorilla trekking in Volcanoes National Parkk</h3>
+            <p>Explore the lush Nyungwe forest to find chimpanzees and take a canopy walk for a unique perspective of the rainforest.</p>
+    
+          </div>
+        </div>
+        <div class="tour-card">
+          <div class="tour-img" style="background-image: url('https://visitnyungwe.org/wp-content/uploads/sites/5/2023/10/canopy_walk.jpg');"></div>
+          <div class="tour-info">
+            <h3> Canopy walks in Nyungwe forest </h3>
+            <p>Track chimpanzee through Nyungwe Forest National Park.</p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auto-moving Wildlife Gallery -->
+  <section id="gallery" class="gallery">
+    <h2 class="section-title gallery-title">Moments in the Wild</h2>
+    <div class="gallery-container">
+      <div class="gallery-track">
+        <!-- Gallery items will be duplicated for seamless scrolling -->
+        <div class="gallery-item" style="background-image: url('https://www.loyaltoursandsafaris.com/wp-content/uploads/2020/10/leopard.jpg')">
+          <div class="gallery-caption">
+            <h3>Majestic Tiger</h3>
+            <p>Bengal tiger in its natural habitat</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://www.nyungweforestnationalpark.org/wp-content/uploads/2021/09/birding-in-Rwanda.jpg')">
+          <div class="gallery-caption">
+            <h3>colored Birds</h3>
+            <p> Colourful birds  through the sky</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://cloudfront-us-east-2.images.arcpublishing.com/reuters/NFWKILBQSZJUDBS5763C5HSXWU.jpg')">
+          <div class="gallery-caption">
+            <h3> Cranes </h3>
+            <p> peaceful cranes walking and picking</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://albertinetours.com/wp-content/uploads/2019/05/nyungwe-national-park-4.jpg')">
+          <div class="gallery-caption">
+            <h3>Chimpanzee</h3>
+            <p> playful chimpanzee</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://www.nyungweforestnationalpark.org/wp-content/uploads/2020/05/Akagerass-750x400.jpg')">
+          <div class="gallery-caption">
+            <h3>Gentle Giant</h3>
+            <p>Elephant in the Rwanda</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://visitnyungwe.org/wp-content/uploads/sites/5/2023/10/adventure_trails.jpg')">
+          <div class="gallery-caption">
+            <h3> warmth waterfall</h3>
+            <p> waterfall sound kicks in</p>
+          </div>
+        </div>
+        
+        <!-- Duplicate items for seamless scrolling -->
+        <div class="gallery-item" style="background-image: url('https://newhorizonafricasafaris.com/wp-content/uploads/2021/07/lake-mburo-national-park.jpg')">
+          <div class="gallery-caption">
+            <h3> Friendly Zebra</h3>
+            <p>peaceful and supportive</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://www.nyungweforestnationalpark.org/wp-content/uploads/2022/02/Nyungwe-monkeys-1-1-1400x400.jpg')">
+          <div class="gallery-caption">
+            <h3> Chimpanze </h3>
+            <p> different families</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://cloudfront.safaribookings.com/lib/rwanda/tour/480x240/Volcanoes_National_Park_079.jpg')">
+          <div class="gallery-caption">
+            <h3>Playful Gorilla</h3>
+            <p> Friendly and approachable</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://www.acaciasafari.com/wp-content/uploads/2023/04/FB_IMG_16808105616304999.jpg')">
+          <div class="gallery-caption">
+            <h3> Birds </h3>
+            <p> songs of colorful birds</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://www.ktpress.rw/wp-content/uploads/2015/06/05-e1514566499941.jpg')">
+          <div class="gallery-caption">
+            <h3>Gentle Giant Lions</h3>
+            <p>King of the jungle</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="background-image: url('https://www.newtimes.co.rw/uploads/imported_images/files/main/articles/2015/06/27/1435356890a5.jpg')">
+          <div class="gallery-caption">
+            <h3> Lions</h3>
+            <p> peaceful and aggressive</p>
+          </div>
+          </div>
+        <div class="gallery-item" style="background-image: url('https://www.loyaltoursandsafaris.com/wp-content/uploads/2020/10/leopard.jpg')">
+          <div class="gallery-caption">
+            <h3>Majestic Tiger</h3>
+            <p>Bengal tiger in its natural habitat</p>
+          </div>
+        
+        
+        </div>
+      </div>
+    </div>
+    
+  
+  </section>
+
+  <!-- BLOGS SECTION -->
+  <section id="blogs" class="blogs">
+    <div class="container">
+      <h2 class="section-title">From the Wild: Our Latest Stories</h2>
+      <div class="blog-carousel" id="blogCarousel">
+        <!-- Blog Card 1 -->
+        <div class="blog-card">
+          <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="blog-content">
+            <h3>The Ethics of Wildlife Photography</h3>
+            <p>How to capture stunning images without disturbing natural behavior.</p>
+            <a href="blog/wildlife-photography-ethics.html" class="read-more-btn">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Card 2 -->
+        <div class="blog-card">
+          <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="blog-content">
+            <h3>Tracking the Great Migration</h3>
+            <p>A month-by-month guide to witnessing nature's greatest spectacle.</p>
+            <a href="blog/great migration.html" class="read-more-btn">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div class="blog-card">
+          <div class="blog-img" style="background-image: url('https://www.safarisrwandasafari.com/wp-content/uploads/2023/03/History-of-Volcanoes-National-750x450.jpg');"></div>
+          <div class="blog-content">
+            <h3>Volcanoes National Park</h3>
+            <p>Volcanoes National Park: Adventures Beyond Gorilla Trekking</p>
+            <a href="./blog/Volcanoes National Park.html" class="read-more-btn">Read More</a>
+          </div>
+        </div>
+
+        <!-- Blog Card 4 -->
+        <div class="blog-card">
+          <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="blog-content">
+            <h3>Lake Kivu</h3>
+            <p>Lake Kivu: Rwanda's Inland Sea of Adventure and Relaxation.</p>
+            <a href="./blog/Lake kivu.html" class="read-more-btn">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <div class="testimonial-content">
+      <p>"Seeing elephants at sunrise in Amboseli changed my life. Our guide knew every bird call!"</p>
+      <div class="client">— Maya R., Canada</div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter-box">
+      <i class="fas fa-envelope envelope-icon"></i>
+      <h3>Join Our Wild Community</h3>
+      <p>Get exclusive offers, wildlife tips, and early access to new tours.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Creative Footer -->
+  <footer id="contact" class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>WildSafari Expeditions</h3>
+        <p>Ethical wildlife adventures since 2010. Conservation-first, traveler-focused.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="./blog/index.html">Journal</a></li>
+          <li><a href="contact us.html">Contact Us</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul class="footer-links">
+          <li>hello@rollinghills.com </li>
+         <li> eloimunezero1@gmail.com</li>
+          <li>+ 250 780 477 052</li>
+          <li>Kigali, Rwanda</li>
+        </ul>
+      </div>
+    </div>
+    <div class="conservation-badges">
+      Proud partners of WWF • Rainforest Alliance Certified • 5% of profits to local conservancies
+    </div>
+  </footer>
+
+  <script>
+    // Hero Carousel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+    setInterval(nextSlide, 5000);
+
+    // Auto-moving Gallery Controls
+    const galleryTrack = document.querySelector('.gallery-track');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const resumeBtn = document.getElementById('resumeBtn');
+    
+    // Pause animation
+    pauseBtn.addEventListener('click', function() {
+      galleryTrack.style.animationPlayState = 'paused';
+    });
+    
+    // Resume animation
+    resumeBtn.addEventListener('click', function() {
+      galleryTrack.style.animationPlayState = 'running';
+    });
+
+    // ===== AUTO-ROTATING BLOG CAROUSEL (CARD-BY-CARD) =====
+    const blogCarousel = document.getElementById('blogCarousel');
+    const blogCards = document.querySelectorAll('.blog-card');
+    let currentBlogIndex = 0;
+    let blogAutoInterval;
+
+    // Calculate width of one card + gap
+    const getCardWidth = () => {
+      if (blogCards.length === 0) return 0;
+      const style = window.getComputedStyle(blogCards[0]);
+      const width = blogCards[0].offsetWidth;
+      const marginLeft = parseFloat(style.marginLeft) || 0;
+      const marginRight = parseFloat(style.marginRight) || 0;
+      const gap = parseFloat(getComputedStyle(blogCarousel).gap) || 30;
+      return width + gap;
+    };
+
+    function scrollToBlogCard(index) {
+      const cardWidth = getCardWidth();
+      blogCarousel.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      });
+      currentBlogIndex = index;
+    }
+
+    function nextBlogCard() {
+      currentBlogIndex = (currentBlogIndex + 1) % blogCards.length;
+      scrollToBlogCard(currentBlogIndex);
+    }
+
+    // Start auto-rotation every 5 seconds
+    blogAutoInterval = setInterval(nextBlogCard, 5000);
+
+    // Pause on hover
+    blogCarousel.addEventListener('mouseenter', () => {
+      clearInterval(blogAutoInterval);
+    });
+
+    blogCarousel.addEventListener('mouseleave', () => {
+      blogAutoInterval = setInterval(nextBlogCard, 5000);
+    });
+
+    // Optional: Ensure it works on window resize
+    window.addEventListener('resize', () => {
+      // Re-sync position after resize
+      scrollToBlogCard(currentBlogIndex);
+    });
+
+    // Stats Animation on Scroll
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const animateStats = () => {
+      statNumbers.forEach(stat => {
+        const rect = stat.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100 && !stat.classList.contains('animate')) {
+          stat.classList.add('animate');
+          const target = +stat.getAttribute('data-target');
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let count = 0;
+          const counter = setInterval(() => {
+            count += step;
+            if (count >= target) {
+              stat.textContent = target.toLocaleString();
+              clearInterval(counter);
+            } else {
+              stat.textContent = Math.ceil(count).toLocaleString();
+            }
+          }, 16);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateStats);
+    window.addEventListener('load', animateStats);
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
